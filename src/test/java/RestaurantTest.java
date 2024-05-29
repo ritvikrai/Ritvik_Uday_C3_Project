@@ -72,5 +72,26 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //>>>>>>>>>>>>>>>>>>>>>>CUSTOMER: GETTING ORDER TOTAL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void check_order_total(){
+        addRestaurantDetails();
+        String[] itemNames = new String[2];
+        int[] itemPrices = new int[2];
+        int expectedOrderTotal = 0;
+        itemNames[0]=restaurant.getMenu().get(0).getName();
+        itemNames[1]=restaurant.getMenu().get(1).getName();
 
+        itemPrices[0]=restaurant.getMenu().get(0).getPrice();
+        itemPrices[1]=restaurant.getMenu().get(1).getPrice();
+
+
+        for(int itemPrice: itemPrices){
+            expectedOrderTotal += itemPrice;
+        }
+
+        int actualOrderTotal = restaurant.getOrderTotal(itemNames);
+        assertEquals(expectedOrderTotal,actualOrderTotal);
+    }
+    //<<<<<<<<<<<<<<<<<<<<CUSTOMER: GETTING ORDER TOTAL>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
