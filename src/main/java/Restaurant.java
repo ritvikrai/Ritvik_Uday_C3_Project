@@ -62,5 +62,15 @@ public class Restaurant {
         return name;
     }
 
-
+    public int getOrderTotal(String[] itemNames ) {
+        int amount = 0;
+        ArrayList<Item> menuSelection = new ArrayList<>();
+        for(String itemName: itemNames){
+            menuSelection.add(findItemByName(itemName));
+        }
+        for(Item item: menuSelection) {
+            amount += item.getPrice();
+        }
+        return amount;
+    }
 }
